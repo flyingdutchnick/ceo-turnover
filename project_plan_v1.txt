@@ -1,0 +1,19 @@
+Game plan for "quick and dirty" XGBoost model:
+
+Desired structure of CSV file for Sagemaker training:
+company - year - ceo_tenure - ceo_age - turnover (YES/NO)
+
+Process steps and responsible:
+1. Upload the data to Google Drive - Ozzi - 15 mins
+2. Create Tableau Prep file that pulls from Google Drive CSV file - Nico - 3 hrs
+3. Run the Tableau Prep and export file to Google Drive - Nico - 30 mins
+4. Create Jupyter notebook file in Sagemaker - Nick / Ozzi - 6 hrs
+5. Run the model, and test results and export to the Github folder - Nick / Ozzi - 15 mins
+6. Commit the model to the Github folder - Nick / Ozzi - 15 mins
+
+Timeline:
+Version 0.0.1 --> by 21 February 2020
+
+
+
+
