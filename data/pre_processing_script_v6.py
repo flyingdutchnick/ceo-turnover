@@ -1,25 +1,25 @@
-#importing packages
+# importing packages
 import pandas as pd
 import numpy as np
 
 
-#Reading in the data
+# Reading in the data
 updated_data = pd.read_csv("pre_processed_v5_CEO.csv")
 
 
-#Data clean-up
+# Data clean-up
 updated_data["Role Tenure"] = updated_data["Tenure (Years)"]
 updated_data.rename(columns={"Tenure (Years)": "Company Tenure"}, inplace=True)
 updated_data.drop(columns=['Unnamed: 0'], inplace=True)
 
-#Creating a "rows" array that contains all the rows of the dataframe as entries
+# Creating a "rows" array that contains all the rows of the dataframe as entries
 rows = []
 for row in updated_data.iterrows():
     rows.append(row[1])
 
 
-#Creating the dictionary with each company name as the key and an array of
-#coresponding rows as the values
+# Creating the dictionary with each company name as the key and an array of
+# corresponding rows as the values
 dataDict = dict()
 for i in np.arange(len(rows)):
     current_company = rows[i]["Company Name"]
