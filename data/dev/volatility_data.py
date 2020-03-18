@@ -1,88 +1,55 @@
-import pandas as pd
 import numpy as np
+from dev_lib import IntegrateData, stdev
 
 
-filepath = "stock_df.pkl"
-raw_data = pd.read_pickle(filepath)
+class IntegrateVolatilityData(IntegrateData):
+
+    def __init__(self, input_path, output_path, input_type='csv', output_type='csv'):
+        super().__init__(input_path, output_path, input_type=input_type, output_type=output_type)
+
+    def integrate_data(self):
+        if self.data is None:
+            self.read_data()
+
+        self.integrate_volatility_data()
+        super().integrate_data()
+
+    def integrate_volatility_data(self):
+
+        def update_df(df):
+            df['idx'] = df.index
+            df['12_mo_stdev'] = df['idx'].apply(lambda row: stdev_returns(row))
+            df['24_mo_stdev'] = df['idx'].apply(lambda row: stdev_returns(row, n=24))
+            df['36_mo_stdev'] = df['idx'].apply(lambda row: stdev_returns(row, n=36))
+            df.drop(['idx'], axis=1, inplace=True)
+
+        update_df(self.data)
+
+        def trailing_n_months_returns(row, n=12):
+            if row < n:
+                return np.array([1])
+
+            trailing_date = self.data.loc[row - n, 'date']
+            current_date = self.data.loc[row, 'date']
+
+            trailing_id = self.data.loc[row - n, 'gvkey']
+            current_id = self.data.loc[row, 'gvkey']
+
+            if month_difference(current_date, trailing_date) == n and trailing_id == current_id:
+                return np.array([self.data.loc[row - i, 'prccm'] for i in range(n)])
+            else:
+
+                # stdev of [1] will always be zero, so this is effectively the dummy variable
+                return np.array([1])
+
+        def month_difference(date_1, date_2):
+            def month(date): return (date // 100) % 100
+            def year(date): return date // 10000
+            return ((year(date_1) - year(date_2)) * 12) + (month(date_1) - month(date_2))
+
+        def stdev_returns(row, n=12):
+            return stdev(trailing_n_months_returns(row, n=n))
 
 
-day = lambda date: date % 100
-month = lambda date: (date // 100) % 100
-year = lambda date: date // 10000
-
-
-def month_difference(date_1, date_2):
-    return ((year(date_1) - year(date_2)) * 12) + (month(date_1) - month(date_2))
-
-
-def pct_chg(current, historical):
-    if historical != 0:
-        return (current - historical) / historical
-    else:
-        return 0
-
-
-def trailing_n_months_return(row, n=12):
-    if row < n:
-        return 0
-
-    trailing_date = raw_data.loc[row - n, 'date']
-    current_date = raw_data.loc[row, 'date']
-
-    trailing_price = raw_data.loc[row - n, 'prccm']
-    current_price = raw_data.loc[row, 'prccm']
-
-    trailing_id = raw_data.loc[row - n, 'gvkey']
-    current_id = raw_data.loc[row, 'gvkey']
-
-    if month_difference(current_date, trailing_date) == n and trailing_id == current_id:
-        return pct_chg(current_price, trailing_price)
-    else:
-        return 0
-
-
-def trailing_n_months_returns(row, n=12):
-    if row < n:
-        return np.array([1])
-
-    trailing_date = raw_data.loc[row - n, 'date']
-    current_date = raw_data.loc[row, 'date']
-
-    trailing_id = raw_data.loc[row - n, 'gvkey']
-    current_id = raw_data.loc[row, 'gvkey']
-
-    if month_difference(current_date, trailing_date) == n and trailing_id == current_id:
-        return np.array([raw_data.loc[row - i, 'prccm'] for i in range(n)])
-    else:
-
-        # stdev of [1] will always be zero, so this is effectively the dummy variable
-        return np.array([1])
-
-
-def avg(array):
-    return np.sum(array) / array.shape[0]
-
-
-def squared_devs(array):
-    average = avg(array)
-    return np.array([(i - average) ** 2 for i in array])
-
-
-def stdev(array):
-    return np.sum(squared_devs(array) / array.shape[0]) ** 0.5
-
-
-def stdev_returns(row, n=12):
-    return stdev(trailing_n_months_returns(row, n=n))
-
-
-raw_data['idx'] = raw_data.index
-raw_data['12_mo_stdev'] = raw_data['idx'].apply(lambda row: stdev_returns(row))
-raw_data['24_mo_stdev'] = raw_data['idx'].apply(lambda row: stdev_returns(row, n=24))
-raw_data['36_mo_stdev'] = raw_data['idx'].apply(lambda row: stdev_returns(row, n=36))
-raw_data = raw_data.drop(['idx'], axis=1)
-
-preview_data = raw_data.drop(['iid', 'date', 'sic', 'gvkey'], axis=1).head(n=100)
-print(preview_data)
-
-raw_data.to_pickle('volatility_df.pkl')
+volatility = IntegrateVolatilityData("csv_files/master_data2000.csv", "csv_files/master_data2000_v1.csv")
+# volatility.read_data()
