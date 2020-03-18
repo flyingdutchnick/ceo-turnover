@@ -4,7 +4,7 @@ from dev_lib import IntegrateData, stdev
 
 class IntegrateVolatilityData(IntegrateData):
 
-    def __init__(self, input_path, output_path, input_type='csv', output_type='csv'):
+    def __init__(self, input_path, output_path, input_type='csv', output_type='csv', date_key=''):
         super().__init__(input_path, output_path, input_type=input_type, output_type=output_type)
 
     def integrate_data(self):
@@ -15,15 +15,6 @@ class IntegrateVolatilityData(IntegrateData):
         super().integrate_data()
 
     def integrate_volatility_data(self):
-
-        def update_df(df):
-            df['idx'] = df.index
-            df['12_mo_stdev'] = df['idx'].apply(lambda row: stdev_returns(row))
-            df['24_mo_stdev'] = df['idx'].apply(lambda row: stdev_returns(row, n=24))
-            df['36_mo_stdev'] = df['idx'].apply(lambda row: stdev_returns(row, n=36))
-            df.drop(['idx'], axis=1, inplace=True)
-
-        update_df(self.data)
 
         def trailing_n_months_returns(row, n=12):
             if row < n:
@@ -50,6 +41,27 @@ class IntegrateVolatilityData(IntegrateData):
         def stdev_returns(row, n=12):
             return stdev(trailing_n_months_returns(row, n=n))
 
+        def update_df(df):
+            df['idx'] = df.index
+            df['12_mo_stdev'] = df['idx'].apply(lambda row: stdev_returns(row))
+            df['24_mo_stdev'] = df['idx'].apply(lambda row: stdev_returns(row, n=24))
+            df['36_mo_stdev'] = df['idx'].apply(lambda row: stdev_returns(row, n=36))
+            df.drop(['idx'], axis=1, inplace=True)
 
-volatility = IntegrateVolatilityData("csv_files/master_data2000.csv", "csv_files/master_data2000_v1.csv")
-# volatility.read_data()
+        update_df(self.data)
+
+
+def main():
+
+    # Defining our paths
+    absolute_path = '/Users/ozzialkhayat/PycharmProjects/ceo-turnover/data/dev/'
+    input_file = absolute_path + "csv_files/master_data2000.csv"
+    output_file = absolute_path + "csv_files/master_data2000_v1.csv"
+
+    # Instantiate IntegrateData object with input and output pointers
+    volatility = IntegrateVolatilityData(input_file, output_file)
+
+    # Run data integration pipeline
+    volatility.read_data()
+    volatility.integrate_data()
+    volatility.write_data()

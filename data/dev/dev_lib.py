@@ -1,12 +1,28 @@
-""" Master file for libraries and classes repeatedly used in /dev"""
+""" Master file for classes and functions repeatedly used in /dev"""
 
 from abc import ABC, abstractmethod
 import pandas as pd
 import numpy as np
 
 
+"""     Class: IntegrateData. This is the abstract superclass used to generalize data pre-processing 
+
+        The motivation is that some data operations (ex, reading and writing to and from files) are identical,
+        and the broad sequence of data reading, data integration, and data writing occurs for each pre-processing step.
+        
+        To define a non-abstract subclass of IntegrateData, one only needs to implement the integrate_data() function
+        and constructor.  
+        
+        Once defined and instantiated, invoking the process() function will carry out all steps of pre-processing"""
+
+
 class IntegrateData(ABC):
 
+    # __init__() ... constructor
+    #   input_path: file path to existing raw data
+    #   output_path: file path to write pre-processed data to
+    #   input_type: format to read input file, set to 'csv' by default
+    #   output_type: format to write output file, set to 'csv' by default
     def __init__(self, input_path, output_path, input_type='csv', output_type='csv'):
         self.input = input_path
         self.output = output_path
@@ -15,10 +31,18 @@ class IntegrateData(ABC):
         self.data = None
         self.data_integrated = False
 
+    # runs through the sequence of reading, pre-processing, and writing data
+    def process(self):
+        self.read_data()
+        self.integrate_data()
+        self.write_data()
+
+    # to be implemented by concrete subclasses
     @abstractmethod
     def integrate_data(self):
         self.data_integrated = True
 
+    # reads and stores data from the input_path
     def read_data(self):
         if self.input_type == 'csv':
             self.data = pd.read_csv(self.input)
@@ -27,6 +51,7 @@ class IntegrateData(ABC):
         else:
             print("Unrecognized input file type")
 
+    # writes stored data to the output_path
     def write_data(self):
         if not self.data_integrated:
             print("Must integrate data before writing to new file")
@@ -39,17 +64,19 @@ class IntegrateData(ABC):
             else:
                 print("Unrecognized output file type")
 
-    def check_input_path(self):
-        print(self.input)
+    # prints a preview of stored data
+    def print_head(self, n=5):
+        if not isinstance(self.data, pd.DataFrame):
+            print("Error accessing self.data, ensure input_file has been read and stored with read_data()")
+        else:
+            print(self.get_data_df().head(n=n))
 
-    def print_output_path(self):
-        print(self.output)
-
-    def head(self):
-        print(self.get_data_df().head())
-
+    # getter for the internally stored data frame
     def get_data_df(self):
         return self.data
+
+
+""" Below are helper methods which may be useful for pre-processing on multiple datasets"""
 
 
 def array_avg(array):
