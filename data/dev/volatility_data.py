@@ -55,8 +55,8 @@ def main():
 
     # Defining our paths
     absolute_path = '/Users/ozzialkhayat/PycharmProjects/ceo-turnover/data/dev/'
-    input_file = absolute_path + "csv_files/master_data2000.csv"
-    output_file = absolute_path + "csv_files/master_data2000_v1.csv"
+    input_file = absolute_path + "csv_files/master_data_monthly.csv"
+    output_file = absolute_path + "csv_files/master_data_monthly_v1.csv"
 
     # Instantiate IntegrateData object with input and output pointers
     volatility = IntegrateVolatilityData(input_file, output_file)
