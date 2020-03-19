@@ -62,7 +62,4 @@ def main():
     volatility = IntegrateVolatilityData(input_file, output_file)
 
     # Run data integration pipeline
-    volatility.read_data()
-    volatility.integrate_data()
-    volatility.write_data()
-
+    volatility.process()

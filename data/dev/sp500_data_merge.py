@@ -35,4 +35,3 @@ def main():
 
     data = MergeSPWithMaster(in_master, in_sp, out_path)
     data.process()
-
