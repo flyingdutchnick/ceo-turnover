@@ -65,3 +65,4 @@ def main():
     volatility.read_data()
     volatility.integrate_data()
     volatility.write_data()
+
