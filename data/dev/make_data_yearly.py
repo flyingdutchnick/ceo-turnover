@@ -10,7 +10,9 @@ class MakeYearly(IntegrateData):
 
     def integrate_data(self):
         if self.date_form == 'YYYYMMDD':
-            self.data.drop(self.data[(self.data['date'] // 100) % 100 != 1].index, inplace=True)
+            self.data.drop(self.data[(self.data[self.date_col] // 100) % 100 != 1].index, inplace=True)
+        elif self.date_form == 'YYYYMMMDD':
+            self.data.drop(self.data["JAN" not in (self.data[self.date_col])].index, inplace=True)
         else:
             print("Unrecognized date format")
             return

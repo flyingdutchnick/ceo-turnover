@@ -76,6 +76,18 @@ class IntegrateData(ABC):
         return self.data
 
 
+class FactoryIntegrateData(IntegrateData):
+
+    def __init__(self, in_file, out_file, integrate_function):
+        self.in_function = integrate_function
+        super().__init__(in_file, out_file)
+
+    def integrate_data(self):
+        self.data = self.in_function(self.data)
+        super().integrate_data()
+
+
+
 """ Below are helper methods which may be useful for pre-processing on multiple datasets"""
 
 
