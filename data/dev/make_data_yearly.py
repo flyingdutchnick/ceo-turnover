@@ -1,4 +1,4 @@
-from dev_lib import IntegrateData
+from dev_lib import IntegrateData, FactoryIntegrateData
 
 
 class MakeYearly(IntegrateData):
@@ -9,10 +9,10 @@ class MakeYearly(IntegrateData):
         super().__init__(in_file, out_file)
 
     def integrate_data(self):
-        if self.date_form == 'YYYYMMDD':
-            self.data.drop(self.data[(self.data[self.date_col] // 100) % 100 != 1].index, inplace=True)
-        elif self.date_form == 'YYYYMMMDD':
-            self.data.drop(self.data["JAN" not in (self.data[self.date_col])].index, inplace=True)
+        if self.date_format == 'YYYYMMDD':
+            self.data.drop(self.data[(self.data[self.date_column] // 100) % 100 != 1].index, inplace=True)
+        elif self.date_format == 'YYYYMMMDD':
+            self.data.drop(self.data["JAN" not in (self.data[self.date_column])].index, inplace=True)
         else:
             print("Unrecognized date format")
             return
@@ -20,10 +20,16 @@ class MakeYearly(IntegrateData):
         super().integrate_data()
 
 
+def monthly_to_yearly(data):
+    return data.drop(data[(data['date'] // 100) % 100 != 1].index)
+
+
 def main():
     in_path = "csv_files/master_data_monthly_v2.csv"
     out_path = "csv_files/master_data_yearly_v0.csv"
 
-    data = MakeYearly(in_path, out_path)
+    data = FactoryIntegrateData(in_path, out_path, monthly_to_yearly)
     data.process()
 
+
+main()
