@@ -12,21 +12,21 @@ from create_roletenure import CreateRoleTenure
 #Creating the master CSV
 master = "csv_files/master_data.csv"
 
-#Cleaning tenure
+# 1) Cleaning tenure
 tenure_data = "csv_files/DirectorTurnoverData.csv"
 step_1 = CleanTenure(tenure_data, master)
 step_1.process()
 
-#Integrating age
+# 2) Integrating age
 age_data = "csv_files/DirectorIDByDOB.csv"
 step_2 = IntegrateAge(master, age_data, master)
 step_2.process()
 
-#Making the dataset panel
+# 3) Making the dataset panel
 step_3 = MakePanel(master, master)
 step_3.process()
 
-#Differentiating between role and company tenure
+# 4) Differentiating between role and company tenure
 step_4 = CreateRoleTenure(master, master)
 step_4.process()
 
