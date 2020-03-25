@@ -35,6 +35,7 @@ class IntegrateData(ABC):
     def process(self):
         self.read_data()
         self.integrate_data()
+        self.drop_unnamed()
         self.write_data()
 
     # to be implemented by concrete subclasses
@@ -74,6 +75,10 @@ class IntegrateData(ABC):
     # getter for the internally stored data frame
     def get_data_df(self):
         return self.data
+
+    # drop unnamed columns from data
+    def drop_unnamed(self):
+        self.data.drop([col for col in self.data.columns if 'Unnamed' in col], axis=1, inplace=True)
 
 
 class FactoryIntegrateData(IntegrateData):
