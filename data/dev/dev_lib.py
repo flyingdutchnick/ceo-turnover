@@ -3,6 +3,7 @@
 from abc import ABC, abstractmethod
 import pandas as pd
 import numpy as np
+import time
 
 
 """     Class: IntegrateData. This is the abstract superclass used to generalize data pre-processing 
@@ -94,6 +95,14 @@ class FactoryIntegrateData(IntegrateData):
 
 
 """ Below are helper methods which may be useful for pre-processing on multiple datasets"""
+
+
+def timed_execution(func_to_execute):
+    t0 = time.time()
+    print("Beginning execution...")
+    func_to_execute()
+    t1 = time.time()
+    print("Execution completed in {}s".format(t1 - t0))
 
 
 def array_avg(array):
