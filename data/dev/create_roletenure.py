@@ -79,6 +79,3 @@ def main():
 
     data = CreateRoleTenure(in_path, out_path)
     data.process()
-
-
-main()
