@@ -41,5 +41,3 @@ def main():
     data = MakeYearly(in_path, out_path)
     data.process()
 
-
-main()

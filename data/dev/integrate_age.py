@@ -56,6 +56,3 @@ def main():
 
     data = IntegrateAge(in_path, new, out_path)
     data.process()
-
-
-main()

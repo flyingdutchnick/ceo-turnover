@@ -70,6 +70,3 @@ def main():
 
     data = MakePanel(in_path, out_path)
     data.process()
-
-
-main()
