@@ -10,10 +10,25 @@ from dev_lib import timed_execution
 
 
 def sagemaker_main():
+
+    # NICO
     master_output = "master_data.csv"
     tenure_input = "DirectorTurnoverData.csv"
     step_1 = CleanTenure(tenure_input, master_output, input_type='s3', output_type='s3')
     step_1.process()
+
+    age_data = "DirectorIDByDOB.csv"
+    step_2 = IntegrateAge(master_output, age_data, master_output, input_type='s3', age_data_type='s3', output_type='s3')
+    step_2.process()
+
+    step_3 = MakePanel(master_output, master_output, input_type='s3', output_type='s3')
+    step_3.process()
+
+    step_4 = CreateRoleTenure(master_output, master_output, input_type='s3', output_type='s3')
+    step_4.process()
+
+    # OZZI
+    pass
 
 
 def main():
