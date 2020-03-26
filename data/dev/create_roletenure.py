@@ -1,6 +1,6 @@
 import numpy as np
 import pandas as pd
-from dev_lib import IntegrateData, stdev
+from data.dev.dev_lib import IntegrateData, stdev
 
 
 class CreateRoleTenure(IntegrateData):

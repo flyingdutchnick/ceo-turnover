@@ -1,5 +1,5 @@
 import numpy as np
-from dev_lib import stdev, IntegrateData
+from data.dev.dev_lib import stdev, IntegrateData
 
 
 class IntegrateSPData(IntegrateData):

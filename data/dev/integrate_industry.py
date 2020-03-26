@@ -1,5 +1,5 @@
-from dev_lib import IntegrateData
 from pandas import read_csv, merge
+from data.dev.dev_lib import IntegrateData
 
 
 class IntegrateIndustry(IntegrateData):
@@ -30,4 +30,3 @@ def main():
     data.process()
 
 
-main()
