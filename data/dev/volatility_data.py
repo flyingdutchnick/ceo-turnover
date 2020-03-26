@@ -4,7 +4,7 @@ from data.dev.dev_lib import IntegrateData, stdev
 
 class IntegrateVolatilityData(IntegrateData):
 
-    def __init__(self, input_path, output_path, input_type='csv', output_type='csv', date_key=''):
+    def __init__(self, input_path, output_path, input_type='csv', output_type='csv'):
         super().__init__(input_path, output_path, input_type=input_type, output_type=output_type)
 
     def integrate_data(self):

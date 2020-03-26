@@ -3,9 +3,9 @@ from data.dev.dev_lib import IntegrateData, pct_chg
 
 class IntegrateStockData(IntegrateData):
 
-    def __init__(self, in_path, out_path, returns_to_calc=(3, 6, 12, 24, 36)):
+    def __init__(self, in_path, out_path, returns_to_calc=(3, 6, 12, 24, 36), input_type='csv', output_type='csv'):
         self.returns_lengths = returns_to_calc
-        super().__init__(in_path, out_path)
+        super().__init__(in_path, out_path, input_type=input_type, output_type=output_type)
 
     def integrate_data(self):
         self.construct_date_from_datadate()

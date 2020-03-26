@@ -5,11 +5,12 @@ from data.dev.dev_lib import IntegrateData
 
 class IntegrateAge(IntegrateData):
 
-    def __init__(self, input_path, new_data, output_path):
+    def __init__(self, input_path, new_data, output_path, input_type='csv', output_type='csv', age_data_type='csv'):
         self.age_path = new_data
+        self.age_type = age_data_type
         self.age_data = None
 
-        super().__init__(input_path, output_path)
+        super().__init__(input_path, output_path, input_type=input_type, output_type=output_type)
 
     def integrate_data(self):
         age_df = self.age_data
@@ -44,7 +45,10 @@ class IntegrateAge(IntegrateData):
         super().integrate_data()
     
     def read_data(self):
-        self.age_data = pd.read_csv(self.age_path)
+        if self.age_type == 's3':
+            self.age_data = self.read_s3_to_df(self.age_path)
+        elif self.age_type == 'csv':
+            self.age_data = pd.read_csv(self.age_path)
         super().read_data()
 
 

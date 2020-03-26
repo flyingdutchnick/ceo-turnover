@@ -4,9 +4,10 @@ from data.dev.dev_lib import IntegrateData
 
 class MergeSPWithMaster(IntegrateData):
 
-    def __init__(self, input_master, input_sp, output_path):
+    def __init__(self, input_master, input_sp, output_path, input_type='csv', output_type='csv', sp_type='csv'):
         self.sp_path = input_sp
         self.sp_data = None
+        self.sp_type = sp_type
 
         super().__init__(input_master, output_path)
 
@@ -23,7 +24,11 @@ class MergeSPWithMaster(IntegrateData):
         super().integrate_data()
 
     def read_data(self):
-        self.sp_data = read_csv(self.sp_path)
+        if self.sp_type == 's3':
+            self.sp_data = self.read_s3_to_df(self.sp_path)
+        elif self.sp_type == 'csv':
+            self.sp_data = read_csv(self.sp_path)
+
         super().read_data()
 
 

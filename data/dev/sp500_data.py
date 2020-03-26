@@ -4,8 +4,8 @@ from data.dev.dev_lib import stdev, IntegrateData
 
 class IntegrateSPData(IntegrateData):
 
-    def __init__(self, in_path, out_path):
-        super().__init__(in_path, out_path)
+    def __init__(self, in_path, out_path, input_type='csv', output_type='csv'):
+        super().__init__(in_path, out_path, input_type=input_type, output_type=output_type)
 
     def integrate_data(self):
         self.data['idx'] = self.data.index

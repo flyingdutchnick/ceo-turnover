@@ -4,10 +4,10 @@ from data.dev.dev_lib import IntegrateData, FactoryIntegrateData
 # Define an IntegrateData subclass to transform monthly data into yearly data
 class MakeYearly(IntegrateData):
 
-    def __init__(self, in_file, out_file, date_col='date', date_form='YYYYMMDD'):
+    def __init__(self, in_file, out_file, date_col='date', date_form='YYYYMMDD', input_type='csv', output_type='csv'):
         self.date_column = date_col
         self.date_format = date_form
-        super().__init__(in_file, out_file)
+        super().__init__(in_file, out_file, input_type=input_type, output_type=output_type)
 
     def integrate_data(self):
         if self.date_format == 'YYYYMMDD':

@@ -93,6 +93,9 @@ class IntegrateData(ABC):
         data_location = 's3://{}/{}'.format(bucket, self.input)
         self.data = pd.read_csv(data_location)
 
+    def read_s3_to_df(self, location):
+        return pd.read_csv('s3://{}/{}'.format('sagemaker-us-east-1-936165954724/ceo-turnover', location))
+
     def write_sagemaker(self):
         filename = self.output
         filepath = "ceo-turnover/" + self.output
