@@ -4,6 +4,7 @@ from abc import ABC, abstractmethod
 import pandas as pd
 import numpy as np
 import time
+import boto3
 
 
 """     Class: IntegrateData. This is the abstract superclass used to generalize data pre-processing 
@@ -50,6 +51,8 @@ class IntegrateData(ABC):
             self.data = pd.read_csv(self.input)
         elif self.input_type == 'pkl':
             self.data = pd.read_pickle(self.input)
+        elif self.input_type == 's3':
+            self.read_sagemaker()
         else:
             print("Unrecognized input file type")
 
@@ -63,6 +66,8 @@ class IntegrateData(ABC):
                 self.data.to_csv(self.output)
             elif self.output_type == 'pkl':
                 self.data.to_pickle(self.output)
+            elif self.output_type == 's3':
+                self.write_sagemaker()
             else:
                 print("Unrecognized output file type")
 
@@ -80,6 +85,20 @@ class IntegrateData(ABC):
     # drop unnamed columns from data
     def drop_unnamed(self):
         self.data.drop([col for col in self.data.columns if 'Unnamed' in col], axis=1, inplace=True)
+
+    def read_sagemaker(self):
+        bucket = 'sagemaker-us-east-1-936165954724/ceo-turnover'
+        data_location = 's3://{}/{}'.format(bucket, self.input)
+        self.data = pd.read_csv(data_location)
+
+    def write_sagemaker(self):
+        filename = self.output
+        filepath = "ceo-turnover/" + self.output
+        bucket = 'sagemaker-us-east-1-936165954724'
+        self.data.to_csv(filename)
+
+        s3 = boto3.resource('s3')
+        s3.meta.client.upload_file(filename, bucket, filepath)
 
 
 class FactoryIntegrateData(IntegrateData):
