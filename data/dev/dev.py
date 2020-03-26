@@ -12,7 +12,7 @@ from data.dev.dev_lib import timed_execution
 def sagemaker_main():
     master_output = "master_data.csv"
     tenure_input = "DirectorTurnoverData.csv"
-    step_1 = CleanTenure(tenure_input, master_output, input_type='s3')
+    step_1 = CleanTenure(tenure_input, master_output, input_type='s3', output_type='s3')
     step_1.process()
 
 
