@@ -26,6 +26,7 @@ class IntegrateData(ABC):
     #   input_type: format to read input file, set to 'csv' by default
     #   output_type: format to write output file, set to 'csv' by default
     def __init__(self, input_path, output_path, input_type='csv', output_type='csv'):
+        print(input_type)
         self.input = input_path
         self.output = output_path
         self.input_type = input_type
@@ -47,6 +48,7 @@ class IntegrateData(ABC):
 
     # reads and stores data from the input_path
     def read_data(self):
+        print(self.input_type)
         if self.input_type == 'csv':
             self.data = pd.read_csv(self.input)
         elif self.input_type == 'pkl':
