@@ -1,5 +1,5 @@
 from pandas import read_csv, merge
-from data.dev.dev_lib import IntegrateData
+from dev_lib import IntegrateData
 
 
 class MergeSPWithMaster(IntegrateData):
@@ -9,7 +9,7 @@ class MergeSPWithMaster(IntegrateData):
         self.sp_data = None
         self.sp_type = sp_type
 
-        super().__init__(input_master, output_path)
+        super().__init__(input_master, output_path, input_type=input_type, output_type=output_type)
 
     def integrate_data(self):
         sp_df = self.sp_data

@@ -1,6 +1,6 @@
 import numpy as np
 from datetime import datetime
-from data.dev.dev_lib import IntegrateData
+from dev_lib import IntegrateData
 
 
 class CleanTenure(IntegrateData):

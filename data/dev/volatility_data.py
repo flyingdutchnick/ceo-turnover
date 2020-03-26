@@ -1,5 +1,5 @@
 import numpy as np
-from data.dev.dev_lib import IntegrateData, stdev
+from dev_lib import IntegrateData, stdev
 
 
 class IntegrateVolatilityData(IntegrateData):

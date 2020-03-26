@@ -1,5 +1,5 @@
 from pandas import read_csv, merge
-from data.dev.dev_lib import IntegrateData
+from dev_lib import IntegrateData
 
 
 class IntegrateIndustry(IntegrateData):

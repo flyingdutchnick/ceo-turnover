@@ -1,4 +1,4 @@
-from data.dev.dev_lib import IntegrateData, pct_chg
+from dev_lib import IntegrateData, pct_chg
 
 
 class IntegrateStockData(IntegrateData):

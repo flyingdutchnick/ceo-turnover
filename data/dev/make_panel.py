@@ -1,5 +1,5 @@
 import pandas as pd
-from data.dev.dev_lib import IntegrateData
+from dev_lib import IntegrateData
 
 
 class MakePanel(IntegrateData):
