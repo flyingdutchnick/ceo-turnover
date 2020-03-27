@@ -38,6 +38,3 @@ def main():
 
     data = IntegrateConversionData(in_path, new, out_path)
     data.process()
-
-
-main()
