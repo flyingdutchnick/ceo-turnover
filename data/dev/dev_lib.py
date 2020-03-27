@@ -124,7 +124,7 @@ def timed_execution(func_to_execute):
     print("Beginning execution...")
     func_to_execute()
     t1 = time.time()
-    print("Execution completed in {}s".format(t1 - t0))
+    print("Execution completed in {}s".format(round(t1 - t0, 2))
 
 
 def array_avg(array):
