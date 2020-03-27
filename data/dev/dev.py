@@ -6,11 +6,12 @@ from clean_tenure import CleanTenure
 from integrate_age import IntegrateAge
 from make_panel import MakePanel
 from create_roletenure import CreateRoleTenure
+from integrate_conversion_data import IntegrateConversionData
+from integrate_stock import IntegrateStockData
 from dev_lib import timed_execution
 
 
 def sagemaker_main():
-
     # NICO
     master_output = "master_data.csv"
     tenure_input = "DirectorTurnoverData.csv"
@@ -27,8 +28,15 @@ def sagemaker_main():
     step_4 = CreateRoleTenure(master_output, master_output, input_type='s3', output_type='s3')
     step_4.process()
 
+    conversion_data = "conversion_dataset.csv"
+    step_5 = IntegrateConversionData(master_output, conversion_data, master_output,
+                                     input_type='s3', conversion_type='s3', output_type='s3')
+    step_5.process
+
     # OZZI
     pass
+
+    
 
 
 def main():
