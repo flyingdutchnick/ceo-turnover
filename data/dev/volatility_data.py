@@ -16,20 +16,17 @@ class IntegrateVolatilityData(IntegrateData):
 
     def integrate_volatility_data(self):
 
-        def trailing_n_months_returns(row_idx, n=12, trailing_arr=[]):
+        def trailing_n_months_returns(row_idx, n=12, arr=[]):
             if row_idx < n:
-                return trailing_n_months_returns(row_idx, n=row_idx, trailing_arr=trailing_arr)
+                return trailing_n_months_returns(row_idx, n=row_idx, arr=arr)
 
-            trailing_row_count = len(trailing_arr)
+            trailing_row_count = len(arr)
             new_rows_needed = n - trailing_row_count
-
-            trailing_date = self.data.loc[row_idx - n, 'date']
-            current_date = self.data.loc[row_idx, 'date']
 
             trailing_id = self.data.loc[row_idx - n, 'gvkey']
             current_id = self.data.loc[row_idx, 'gvkey']
 
-            if month_difference(current_date, trailing_date) == n and trailing_id == current_id:
+            if trailing_id == current_id:
                 return np.array([] + [self.data.loc[row_idx - i, 'prccm'] for i in range(new_rows_needed)])
             else:
 
