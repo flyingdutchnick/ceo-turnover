@@ -70,3 +70,5 @@ def main():
     data = IntegrateStockData(file_in, file_out)
     data.process()
 
+    print()
+
