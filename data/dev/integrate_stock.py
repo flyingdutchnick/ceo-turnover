@@ -25,7 +25,7 @@ class IntegrateStockData(IntegrateData):
 
         def make_data_sortable(date):
             days_input = date[0:2]
-            days = int(days_input.replace('\\', ''))
+            days = int(days_input.replace('/', ''))
             month = month_str_to_num[date[2:5]]
             year = int(date[5:9])
 
@@ -69,4 +69,6 @@ def main():
 
     data = IntegrateStockData(file_in, file_out)
     data.process()
+
+    print()
 
