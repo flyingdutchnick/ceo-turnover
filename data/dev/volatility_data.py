@@ -16,18 +16,21 @@ class IntegrateVolatilityData(IntegrateData):
 
     def integrate_volatility_data(self):
 
-        def trailing_n_months_returns(row, n=12):
-            if row < n:
-                return np.array([1])
+        def trailing_n_months_returns(row_idx, n=12, trailing_arr=[]):
+            if row_idx < n:
+                return trailing_n_months_returns(row_idx, n=row_idx, trailing_arr=trailing_arr)
 
-            trailing_date = self.data.loc[row - n, 'date']
-            current_date = self.data.loc[row, 'date']
+            trailing_row_count = len(trailing_arr)
+            new_rows_needed = n - trailing_row_count
 
-            trailing_id = self.data.loc[row - n, 'gvkey']
-            current_id = self.data.loc[row, 'gvkey']
+            trailing_date = self.data.loc[row_idx - n, 'date']
+            current_date = self.data.loc[row_idx, 'date']
+
+            trailing_id = self.data.loc[row_idx - n, 'gvkey']
+            current_id = self.data.loc[row_idx, 'gvkey']
 
             if month_difference(current_date, trailing_date) == n and trailing_id == current_id:
-                return np.array([self.data.loc[row - i, 'prccm'] for i in range(n)])
+                return np.array([] + [self.data.loc[row_idx - i, 'prccm'] for i in range(new_rows_needed)])
             else:
 
                 # stdev of [1] will always be zero, so this is effectively the dummy variable
@@ -38,8 +41,9 @@ class IntegrateVolatilityData(IntegrateData):
             def year(date): return date // 10000
             return ((year(date_1) - year(date_2)) * 12) + (month(date_1) - month(date_2))
 
-        def stdev_returns(row, n=12):
-            return stdev(trailing_n_months_returns(row, n=n))
+
+        def stdev_returns(row, n=12, arr=[]):
+            return stdev(trailing_n_months_returns(row, n=n, arr=arr))
 
         def update_df(df):
             df['idx'] = df.index

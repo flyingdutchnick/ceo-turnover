@@ -63,9 +63,10 @@ class IntegrateStockData(IntegrateData):
 
 def main():
 
-    file_in = "csv_files/SharePriceData.csv"
-    file_out = "csv_files/StockReturns.csv"
+    file_in = "csv_files/SharePriceDataHead.csv"
+    file_out = "csv_files/StockReturnsHead.csv"
 
     data = IntegrateStockData(file_in, file_out)
     data.process()
 
+main()
