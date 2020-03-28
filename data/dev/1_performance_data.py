@@ -58,3 +58,6 @@ merge_stock_market = MergeSPWithMaster(
 
 # merge the two datasets and write to master
 merge_stock_market.process()
+
+
+print()
