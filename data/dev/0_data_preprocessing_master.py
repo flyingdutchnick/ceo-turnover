@@ -31,7 +31,7 @@ def sagemaker_main():
     conversion_data = "conversion_dataset.csv"
     step_5 = IntegrateConversionData(master_output, conversion_data, master_output,
                                      input_type='s3', conversion_type='s3', output_type='s3')
-    step_5.process
+    step_5.process()
 
     # OZZI
     pass
