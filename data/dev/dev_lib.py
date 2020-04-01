@@ -84,7 +84,7 @@ class IntegrateData(ABC):
 
     # drop unnamed columns from data
     def drop_unnamed(self):
-        self.data.drop([col for col in self.data.columns if 'Unnamed' in col], axis=1, inplace=True)
+        self.data.drop([col for col in self.data.columns if 'unnamed' in col.lower()], axis=1, inplace=True)
 
     def read_sagemaker(self):
         bucket = 'sagemaker-us-east-1-936165954724/ceo-turnover'

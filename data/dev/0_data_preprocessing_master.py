@@ -72,7 +72,7 @@ def main():
     final_master_yearly = "csv_files/master_data_yearly_final.csv"
 
     sp500_raw = "csv_files/SP500-Monthly-2000"
-    sp500_processed = "csv_files/SP500-Returns-Volatility.csv"
+    sp500_processed = "csv_files/sp500-returns-volatility.csv"
 
     volatility_data = IntegrateVolatilityData(initial_master, intermediate_master)
     sp_data = IntegrateSPData(sp500_raw, sp500_processed)

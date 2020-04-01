@@ -15,11 +15,15 @@ class MergeSPWithMaster(IntegrateData):
         sp_df = self.sp_data
         master_df = self.data
 
-        master_df['matched_date'] = master_df['date'].apply(lambda date: date // 100)
+        # needs fixing
+        master_df['matched_date'] = master_df['datadate'].apply(
+            lambda date: int(date[-4:] + date[0:2]) if '/' not in date[0:2] else int(date[-4:] + '0' + date[0]))
         sp_df['matched_date'] = sp_df['Date'].apply(lambda date: date // 100)
 
-        merged_df = merge(master_df, sp_df, how='inner', left_on='matched_date', right_on='matched_date')
-        self.data = merged_df.drop(['Unnamed: 0_x', 'Unnamed: 0.1', 'Unnamed: 0.1.1', 'Unnamed: 0_y'], axis=1)
+        print(master_df['matched_date'])
+        print(sp_df['matched_date'])
+
+        self.data = merge(master_df, sp_df, how='inner', left_on='matched_date', right_on='matched_date')
 
         super().integrate_data()
 
@@ -35,7 +39,7 @@ class MergeSPWithMaster(IntegrateData):
 def main():
 
     in_master = 'csv_files/master_data_monthly_v1.csv'
-    in_sp = 'csv_files/SP500-Returns-Volatility.csv'
+    in_sp = 'csv_files/sp500-returns-volatility.csv'
     out_path = 'csv_files/master_data_monthly_v2.csv'
 
     data = MergeSPWithMaster(in_master, in_sp, out_path)

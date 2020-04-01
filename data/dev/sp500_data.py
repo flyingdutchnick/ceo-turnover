@@ -68,8 +68,8 @@ class IntegrateSPData(IntegrateData):
 
 
 def main():
-    input_path = "csv_files/SP500-Monthly-2000.csv"
-    output_path = "csv_files/SP500-Returns-Volatility.csv"
+    input_path = "csv_files/sp500-monthly-price.csv"
+    output_path = "csv_files/sp500-returns-volatility.csv"
 
     SPData = IntegrateSPData(input_path, output_path)
     SPData.process()
