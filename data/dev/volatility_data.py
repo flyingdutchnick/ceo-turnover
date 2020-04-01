@@ -1,55 +1,40 @@
-import numpy as np
-from dev_lib import IntegrateData, stdev
+from dev_lib import IntegrateData
+from tqdm import tqdm
+from integrate_stock import IntegrateStockData
+import warnings
 
 
 class IntegrateVolatilityData(IntegrateData):
 
-    def __init__(self, input_path, output_path, input_type='csv', output_type='csv'):
+    def __init__(self, input_path, output_path, input_type='csv', output_type='csv', periods=(3, 6, 12)):
+        self.vol_periods = periods
         super().__init__(input_path, output_path, input_type=input_type, output_type=output_type)
 
     def integrate_data(self):
-        if self.data is None:
+
+        # if we don't have trailing 1 month returns in our df, add them
+        if 'trailing_1_mo_return' not in self.data.columns:
+            IntegrateStockData(self.input, self.input, input_type=self.input_type, returns_to_calc=[1]).process()
             self.read_data()
 
-        self.integrate_volatility_data()
+        # save the index to a named column to use the apply function but keep track of the idx we are currently mapping
+        self.data['unnamed'] = self.data.index
+
+        # suppress FutureWarning from tqdm -> pandas calls
+        warnings.simplefilter('ignore')
+
+        # for each volatility period we would like to measure
+        for n in self.vol_periods:
+            tqdm.pandas(desc='Integrating {} month historical volatility'.format(n))
+
+            # trailing n month volatility is standard deviation of trailing_1_mo returns over the prior n observations
+            self.data['trailing_{}_mo_volatility'.format(n)] = self.data['unnamed'].progress_apply(
+                lambda i: 0 if i < n or self.data.loc[max(i - n, 0), 'gvkey'] != self.data.loc[i, 'gvkey']
+                else self.data.loc[i - n + 1:i,'trailing_1_mo_return'].std()
+            )
+
+        # call super, this will mark that data has been integrated and is ready to write to destination file
         super().integrate_data()
-
-    def integrate_volatility_data(self):
-
-        def trailing_n_months_returns(row_idx, n=12, arr=[]):
-            if row_idx < n:
-                return trailing_n_months_returns(row_idx, n=row_idx, arr=arr)
-
-            trailing_row_count = len(arr)
-            new_rows_needed = n - trailing_row_count
-
-            trailing_id = self.data.loc[row_idx - n, 'gvkey']
-            current_id = self.data.loc[row_idx, 'gvkey']
-
-            if trailing_id == current_id:
-                return np.array([] + [self.data.loc[row_idx - i, 'prccm'] for i in range(new_rows_needed)])
-            else:
-
-                # stdev of [1] will always be zero, so this is effectively the dummy variable
-                return np.array([1])
-
-        def month_difference(date_1, date_2):
-            def month(date): return (date // 100) % 100
-            def year(date): return date // 10000
-            return ((year(date_1) - year(date_2)) * 12) + (month(date_1) - month(date_2))
-
-
-        def stdev_returns(row, n=12, arr=[]):
-            return stdev(trailing_n_months_returns(row, n=n, arr=arr))
-
-        def update_df(df):
-            df['idx'] = df.index
-            df['12_mo_stdev'] = df['idx'].apply(lambda row: stdev_returns(row))
-            df['24_mo_stdev'] = df['idx'].apply(lambda row: stdev_returns(row, n=24))
-            df['36_mo_stdev'] = df['idx'].apply(lambda row: stdev_returns(row, n=36))
-            df.drop(['idx'], axis=1, inplace=True)
-
-        update_df(self.data)
 
 
 def main():
