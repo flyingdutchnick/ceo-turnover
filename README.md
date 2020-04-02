@@ -48,17 +48,12 @@ Wharton Research Data Services (WRDS) was used in preparing this predictive mode
 ### 3. Results
 
 -------
-### 4. Next steps and thoughts on ethical issues
+### 4. Next steps
 
-The possibilities offered by AI are exciting. Through online courses, cloud services and technical chat forums, models that could once only be built by PhDs in econometrics or computer science labs at top universities are now being applied by guys in a basement on an AWS server. Some call this the "democratization of AI".
+A natural way to strengthen the model would be to use internal company data. Boards with access to company communications could significantly enhance the power of a predictive model that predicts the turnover of top management at their company by using in-house company data as an input. They could mine board meeting minutes, the communications of a CEO and their deputies, or the the emails of all company staff. 
 
-For companies making business decisions on the basis of AI, there are significant ethical risks involved. The CEO turnover model offers a good example of this. For our model, we used publicly available data, but boards with access to company communications could significantly enhance the power of a predictive model by using in-house company data as an input. They could mine board meeting minutes, the communications of a CEO and their deputies, or the the emails of all company staff. This raises serious ethical questions, with negative implications for companies who are seen to be misusing AI.
+To advance with this line of work, businesses also need to invest in the human expertise to leverage the benefits of the new technology while minimizing potential downside risks. 
 
-Companies can stay a step ahead of AI dilemmas by answering the following questions: 
+The German multinational software company SAP has an AI ethics advisory panel, steering committee, along with set of guiding principles and detailed ethics code to govern the use of AI. Microsoft and Google have published "AI Principles", while the OpenAI research organization founded by Elon Musk has published a charter that guides the organnization in "acting in the best interests of humanity throughout its development."
 
-- Is the company's use of AI completely compliant with current (and likely future) laws and regulations? 
-- Can the company explain what it is doing with AI and how its use of AI is fair and aligned with stakeholder expectations?
-- Do we understand potential biases of our models? If so, how do we ensure checks and balances? 
-- Do people who are affected by AI have a voice in the development process and a way to ensure their voice is heard?
-
-SAP, the multinational software company, has an AI ethics advisory panel, steering committee, along with set of guiding principles and detailed ethics code to govern the use of AI. Given the rapid progress in AI and the high stakes involved, all companies applying AI in their business would be wise to consider the benefits of following a similar approach.
+In conclusion, any models used for talent management or predicting turnover should carefully calibrate the use of artificial intelligence using human intelligence. 
