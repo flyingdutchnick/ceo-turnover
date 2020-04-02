@@ -16,7 +16,7 @@ What if a CEO transition or crisis could be predicted before it emerges? If boar
 
 This project seeks to explore how we can use off-the-shelf analytics tools like the powerful XGBoost model along with publicly available data to predict a CEO turnover event before it happens. Specifically, we want to predict the following question:
 
-   **"Will a CEO leave his or her job in the next 12 months?**
+   **Will a CEO leave his or her job in the next 12 months? TRUE or FALSE**
 
 Below we describe our data used, our methodology, the results of our model and some suggested next steps.
 
