@@ -48,7 +48,7 @@ Wharton Research Data Services (WRDS) was used in preparing this predictive mode
 ### 3. Results
 
 -------
-### 4. Next steps: confronting the dark side of AI
+### 4. Next steps and thoughts on ethical issues
 
 The possibilities offered by AI are exciting. Through online courses, cloud services and technical chat forums, models that could once only be built by PhDs in econometrics or computer science labs at top universities are now being applied by guys in a basement on an AWS server. Some call this the "democratization of AI".
 
