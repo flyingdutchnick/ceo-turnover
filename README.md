@@ -1,14 +1,14 @@
 # Predicting CEO turnover
 
-Inevitably, over the life of a company, CEOs are hired and replaced. Here are some stories reported by the Economist in the past three months: 
+Inevitably, over the life of a company, CEOs are hired and replaced. Here are some headlines from the past three months: 
 
-> "Tidjane Thiam is forced out of Credit Suisse after a spying fiasco."
+- "Tidjane Thiam is forced out of Credit Suisse after a spying fiasco."
 
-> "A hard act to follow: Bob Iger leaves Disney."
+- "A hard act to follow: Bob Iger leaves Disney."
 
-> "Should Jamie Dimon, Wall Street’s most celebrated boss, call it a day?"
+- "Should Jamie Dimon, Wall Street’s most celebrated boss, call it a day?"
 
-> "Talk of succession atop Big Tech grows louder: giants including Salesforce, Apple and Microsoft may get new bosses in the next year or two"
+- "Talk of succession atop Big Tech grows louder: giants including Salesforce, Apple and Microsoft may get new bosses in the next year or two"
 
 A new HBO series called Succession dramatizes the events surrounding some CEO transitions: confusion among shareholders about the direction of the company, uncertainty for employees and a CEO's team, heightened regulatory scrutiny, and an increased risk of becoming a takeover target.  Not all CEO transitions have as a high a dose of drama as portrayed in Succession, but these events are far from unusual. Many a CEO transition has gone bad. 
 
