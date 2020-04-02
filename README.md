@@ -18,11 +18,11 @@ Recent advances in AI and cloud computing have made it possible to do this type 
 
     For a CEO at a company in a given month, will they leave their job in the next 12 months? (TRUE or FALSE)
 
-Below we describe in more detail the data used, the methodology, the results of the model and some suggested next steps.
+Below we describe in more detail 1) data used, 2) methodology, 3) results and 4) suggested next steps.
 
 -------
 
-### Data
+### 1. Data
 
 Wharton Research Data Services (WRDS) was used in preparing this predictive model of CEO turnover. This service and the data available thereon constitute valuable intellectual property and trade secrets of WRDS and/or its third-party suppliers. Our dataset contains the following variables. 
 
@@ -42,13 +42,13 @@ Wharton Research Data Services (WRDS) was used in preparing this predictive mode
 - Closing price
 
 -------
-### Methodology
+### 2.Methodology
 
 -------
-### Results
+### 3. Results
 
 -------
-### Next steps: confronting the dark side of AI
+### 4. Next steps: confronting the dark side of AI
 
 The possibilities offered by AI are exciting. Through online courses, cloud services and technical chat forums, models that could once only be built by PhDs in econometrics or computer science labs at top universities are now being applied by guys in a basement on an AWS server. Some call this the "democratization of AI".
 
