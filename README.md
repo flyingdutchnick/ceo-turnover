@@ -52,11 +52,13 @@ Wharton Research Data Services (WRDS) was used in preparing this predictive mode
 
 The possibilities offered by AI are exciting. Through online courses, cloud services and technical chat forums, models that could once only be built by PhDs in econometrics or computer science labs at top universities are now being applied by guys in a basement on an AWS server. Some call this the "democratization of AI".
 
-But for the companies making decisions on the basis of AI, there are ethical issues involved. In the case of predicting CEO turnover, we used publicly available data, but if boards wanted, they could significantly enhance the power of a predictive model by using in-house company data as an input. They could mine board meeting minutes, the communications of a CEO and their deputies, or the the emails of all company staff. This raises ethical questions. Companies can stay a step ahead of mushrooming "AI dilemmas" by answering the following questions: 
+For companies making business decisions on the basis of AI, there are significant ethical risks involved. The CEO turnover model offers a good example of this. For our model, we used publicly available data, but boards with access to company communications could significantly enhance the power of a predictive model by using in-house company data as an input. They could mine board meeting minutes, the communications of a CEO and their deputies, or the the emails of all company staff. This raises serious ethical questions, with negative implications for companies who are seen to be misusing AI.
+
+Companies can stay a step ahead of AI dilemmas by answering the following questions: 
 
 - Is the company's use of AI completely compliant with current (and likely future) laws and regulations? 
 - Can the company explain what it is doing with AI and how its use of AI is fair and aligned with stakeholder expectations?
 - Do we understand potential biases of our models? If so, how do we ensure checks and balances? 
 - Do people who are affected by AI have a voice in the development process and a way to ensure their voice is heard?
 
-We don't expect all companies to have answers ready, but we think it's the responsibility of boards to proactively debate these issues, understand the implications of AI and ensure the company has standards in place for the fair use of AI. Given the rapid progress in AI and the high stakes involved, boards should start these discussions today. 
+It's the responsibility of boards and leaders of companies to proactively debate these issues, understand the implications of AI and ensure the company has standards in place for the responsible use of AI. Given the rapid progress in AI and the high stakes involved, boards should start these discussions today. 
