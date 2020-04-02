@@ -61,4 +61,4 @@ Companies can stay a step ahead of AI dilemmas by answering the following questi
 - Do we understand potential biases of our models? If so, how do we ensure checks and balances? 
 - Do people who are affected by AI have a voice in the development process and a way to ensure their voice is heard?
 
-Ultimately, corporate leaders msut proactively debate these issues and come up with answers. SAP, the multinational software company, has an AI ethics advisory panel, steering committee, along with set of guiding principles and detailed ethics code to govern the use of AI. Given the rapid progress in AI and the high stakes involved, all companies applying AI in their business would be wise to consider following a similar path.
+SAP, the multinational software company, has an AI ethics advisory panel, steering committee, along with set of guiding principles and detailed ethics code to govern the use of AI. Given the rapid progress in AI and the high stakes involved, all companies applying AI in their business would be wise to consider the benefits of following a similar approach.
