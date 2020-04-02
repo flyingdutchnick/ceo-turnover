@@ -8,7 +8,7 @@ Inevitably, over the life of a company, CEOs are hired and replaced. Here are so
 
 - "Should Jamie Dimon, Wall Street’s most celebrated boss, call it a day?"
 
-- "Talk of succession atop Big Tech grows louder: giants including Salesforce, Apple and Microsoft may get new bosses in the next year or two"
+- "Giants including Salesforce, Apple and Microsoft may get new bosses in the next year or two"
 
 A new HBO series called Succession dramatizes the CEO transition: confusion among shareholders about the leadership of the company, uncertainty for employees, heightened regulatory scrutiny, and risk of becoming a takeover target.  Not all CEO transitions are infused with drama like Succession, but the lack of certainty that pervades every episode of the show is far from unusual. 
 
