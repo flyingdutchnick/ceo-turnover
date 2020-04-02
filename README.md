@@ -1,22 +1,26 @@
 # Predicting CEO turnover
 
-Inevitably, over the life of a company, CEOs are hired and replaced. Here is what The Economist had to report about a few CEO transitions during the past three months: 
+Inevitably, over the life of a company, CEOs are hired and replaced. Here are some stories reported by the Economist in the past three months: 
 
-- "Tidjane Thiam is forced out of Credit Suisse after a spying fiasco."
+> "Tidjane Thiam is forced out of Credit Suisse after a spying fiasco."
 
-- "A hard act to follow: Bob Iger leaves Disney."
+> "A hard act to follow: Bob Iger leaves Disney."
 
-- "Should Jamie Dimon, Wall Street’s most celebrated boss, call it a day?"
+> "Should Jamie Dimon, Wall Street’s most celebrated boss, call it a day?"
 
-- "Talk of succession atop Big Tech grows louder: giants including Salesforce, Apple and Microsoft may get new bosses in the next year or two"
+> "Talk of succession atop Big Tech grows louder: giants including Salesforce, Apple and Microsoft may get new bosses in the next year or two"
 
 A new HBO series called Succession dramatizes the events surrounding some CEO transitions: confusion among shareholders about the direction of the company, uncertainty for employees and a CEO's team, heightened regulatory scrutiny, and an increased risk of becoming a takeover target.  Not all CEO transitions have as a high a dose of drama as portrayed in Succession, but these events are far from unusual. Many a CEO transition has gone bad. 
 
 What if a CEO transition or crisis could be predicted before it emerges? If boards could predict turnover events, they might be able to prevent minor problems from blowing into major crises, or they might be able to accelerate planning for a successor. Recent advances in AI and cloud computing have removed constraints and make it possible to do this type of analysis at low cost, while following widely-available recipes. 
 
-This project seeks to explore how we can use off-the-shelf analytics tools like the XGBoost mod and publicly available data to predict if a CEO turnover event. 
+This project seeks to explore how we can use off-the-shelf analytics tools like the powerful XGBoost model along with publicly available data to predict a CEO turnover event before it happens. Specifically, we want to predict the following question:
 
-Here we describe our data used, our methodology, the results of our model and some suggested next steps.
+   **"Will a CEO leave his or her job in the next 12 months?**
+
+Below we describe our data used, our methodology, the results of our model and some suggested next steps.
+
+-------
 
 ### Data
 
