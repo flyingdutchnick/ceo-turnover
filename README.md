@@ -45,6 +45,13 @@ Wharton Research Data Services (WRDS) was used in preparing this predictive mode
 
 ### Results
 
-### Next steps
+### Next steps: dealing with ethical dilemmas
 
-The implications of AI are unimaginable. But once you get past the initial excitement raised by the potential AI, you are quicly confronted with serious ethical issues where rules don't exist. Should a board mine the email communications of a CEO and their top management team? Should a board monitor the private life of their CEO? Should "water cooler" talk be monitored and taken into account? How do we ensure checks and balances? We don't have the answers, but we think it's the responsibility of everyone to proactively debate these issues and make hard choices or risk AI deciding what's best for us.
+The possibilities offered by AI are exciting. Through online courses, cloud services and chat forums, models that were once only applied by PhDs with degrees in econometrics or computer science are now being applied by guys in a basement on AWS. But for companies, there are serious ethical issues involved. In the case of predicting CEO turnover, we used publicly available data, but if boards wanted, they could take this to another level to enhance the power of the models. They could mine the communications of a CEO and their deputies along with the emails of everyone else in the company, raising serious ethical questions. Here are the questions we believe boards should be asking themselves. 
+
+- Is the company's use of AI completely compliant with current (and likely future) laws and regulations? 
+- Can the company explain what it is doing with AI and how its use of AI is fair and aligned with stakeholder expectations?
+- Do we understand potential biases of our models? If so, how do we ensure checks and balances? 
+- Do people who are affected by AI have a voice in the development process and a way to ensure their voice is heard?
+
+We don't expect companies have all the answers ready, but we think it's the responsibility of all boards to proactively debate these issues, understand the implications of AI and develop standards for the fair use of AI framework to ensure AI is used responsibly. Given the rapid progress in AI, boards should start these discussions today. 
