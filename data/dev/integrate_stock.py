@@ -38,7 +38,7 @@ class IntegrateStockData(IntegrateData):
     def construct_date_from_datadate(self):
         try:
             self.data['date'] = pd.to_datetime(self.data['datadate'], format='%m/%d/%Y')
-        except KeyError:
+        except ValueError:
             mon_to_int = {'JAN':'01', 'FEB':'02', 'MAR':'03', 'APR':'04', 'MAY':'05',
                           'JUN':'06', 'JUL':'07', 'AUG':'08', 'SEP':'09', 'OCT':'10',
                           'NOV':'11', 'DEC':'12'}
