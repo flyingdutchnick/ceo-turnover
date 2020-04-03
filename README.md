@@ -10,7 +10,7 @@ Inevitably, over the life of a company, CEOs are hired and replaced. Here are so
 
 - "Giants including Salesforce, Apple and Microsoft may get new bosses in the next year or two"
 
-A new HBO series called Succession dramatizes the CEO transition: confusion among shareholders about who is in charge, uncertainty for employees, regulatory scrutiny, and a takeover battle.  Not every CEO transition is infused with drama like in the series Succession, but the lack of certainty that pervades the show is representative of many a CEO replacement. 
+A new HBO series called Succession dramatizes the CEO transition. After the Founder-CEO falls ill, there is confusion among shareholders about who is in charge, uncertainty for employees about their future, regulatory scrutiny, and the company becomes the target of a takeover attempt.  Not every CEO transition is infused with as much drama, but the lack of certainty that pervades the show is representative of many a CEO replacement. 
 
 What if a CEO transition could be predicted before it happened? If an indicator showed a risk of a turnover event happening, a board could get ahead of events and pre-emptively issue a press release to address the (unfounded) uncertainty in the market. Investors, on the other hand, might use predictive data about turnover events as a "factor" to balance their asset allocation. 
 
