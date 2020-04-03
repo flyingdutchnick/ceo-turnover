@@ -1,5 +1,6 @@
 import numpy as np
 from dev_lib import stdev, IntegrateData
+from tqdm import tqdm
 
 
 class IntegrateSPData(IntegrateData):
@@ -9,6 +10,22 @@ class IntegrateSPData(IntegrateData):
 
     def integrate_data(self):
         self.data['idx'] = self.data.index
+
+        returns_periods = [1, 3, 6, 12, 24, 36]
+        vol_periods = [3, 6, 12]
+
+        for return_period in returns_periods:
+            col_label = "sp500_trailing_{}_mo_return".format(return_period)
+            tqdm.pandas(desc='Integrating SP500 {} month returns'.format(return_period))
+            self.data[col_label] = self.data['idx'].progress_apply(
+                lambda row: self.trailing_n_rows_change(row, n=return_period))
+
+        for vol_period in vol_periods:
+            col_label = "sp500_historical_{}_mo_volatility".format(vol_period)
+            tqdm.pandas(desc='Integrating SP500 {} month historical volatility'.format(vol_period))
+            self.data[col_label] = self.data['idx'].progress_apply(
+                lambda row: self.stdev_returns(row, n=36)
+            )
 
         self.data['12mo_sp_return'] = self.data['idx'].apply(self.trailing_12_mo_return)
         self.data['24mo_sp_return'] = self.data['idx'].apply(self.trailing_24_mo_return)

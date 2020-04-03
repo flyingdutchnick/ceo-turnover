@@ -1,5 +1,6 @@
 from pandas import read_csv, merge
 from dev_lib import IntegrateData
+from tqdm import tqdm
 
 
 class MergeSPWithMaster(IntegrateData):
@@ -15,15 +16,13 @@ class MergeSPWithMaster(IntegrateData):
         sp_df = self.sp_data
         master_df = self.data
 
-        # needs fixing
         master_df['matched_date'] = master_df['datadate'].apply(
             lambda date: int(date[-4:] + date[0:2]) if '/' not in date[0:2] else int(date[-4:] + '0' + date[0]))
         sp_df['matched_date'] = sp_df['Date'].apply(lambda date: date // 100)
 
-        print(master_df['matched_date'])
-        print(sp_df['matched_date'])
-
-        self.data = merge(master_df, sp_df, how='inner', left_on='matched_date', right_on='matched_date')
+        tqdm.pandas(desc='Merging stock performance and market performance datasets')
+        self.data = merge(master_df, sp_df, how='inner', left_on='matched_date', right_on='matched_date').\
+            progress_apply(lambda x: x)
 
         super().integrate_data()
 
