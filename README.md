@@ -18,7 +18,12 @@ Recent advances in AI and cloud computing make it possible to do this type of an
 
     For a CEO at a company in a given month, will they leave their job in the next 12 months? (TRUE or FALSE)
 
-This post describes 1) Data used, 2) Methodology, 3) Results and 4) Next steps.
+This post describes:
+
+1) Data
+2) Methodology
+3) Results
+4) Next steps
 
 -------
 
